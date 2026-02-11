@@ -141,3 +141,14 @@ This project aims to:
 
 ### 2️⃣ Development Process Flow
 ![Development Process Flow](diagrams/development-process-flow.png)
+
+### 3️⃣ System Workflow Diagram
+![System Workflow Diagram](diagrams/system-workflow.png)
+
+
+---
+
+## 📌 Notes
+This application is designed for **educational purposes** and local testing only.  
+No backend or database server is used in this version.
+
