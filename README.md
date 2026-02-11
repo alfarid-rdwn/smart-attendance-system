@@ -3,24 +3,27 @@
 ## 📌 Project Overview
 Smart Attendance System is a simple web-based application developed as a Final Exam Group Project for the Software Engineering course.
 
-This project demonstrates the implementation of Git version control and collaborative development using GitHub. The system allows users to log in and manage student attendance records through a clean and modern user interface.
+This project demonstrates the implementation of Git version control and collaborative development using GitHub.  
+The system allows users to log in and manage student attendance records through a clean and modern user interface.
 
 ---
 
 ## 👥 Team Members
 
-1. Alfarid Ridwan (60%)
+1. **Alfarid Ridwan (60%)**
    - Login Page
    - Modern UI Styling
    - Login Validation
    - Dashboard Layout
    - Logout System
 
-2. Susi Septiyani Febrian (40%)
+2. **Susi Septiyani Febrian (40%)**
    - Attendance Form
    - Save Data using localStorage
    - Display Attendance Table
    - Delete Attendance Record
+
+> Contribution percentages are based on feature responsibility and commit history.
 
 ---
 
@@ -30,22 +33,23 @@ This project demonstrates the implementation of Git version control and collabor
 - Login using username and password
 - Session validation using localStorage
 - Logout functionality
+- Login error notification using toast message
 
 ### 📝 Attendance Management
 - Add student attendance (Name & Status)
-- Automatically save attendance data
-- Display attendance list in a table
+- Automatically save attendance data using localStorage
+- Display attendance list in a dynamic table
 - Delete attendance records
+- Attendance data persists during browser session
 
 ---
 
 ## 🛠 Technologies Used
-
-- HTML5
-- CSS3
-- JavaScript (Vanilla JS)
-- LocalStorage
-- Git & GitHub
+- HTML5  
+- CSS3  
+- JavaScript (Vanilla JS)  
+- LocalStorage  
+- Git & GitHub  
 
 ---
 
@@ -61,25 +65,28 @@ This project applies proper Git collaboration practices:
 - Code review before merging
 - All code merged into the `main` branch
 
+This workflow ensures code quality, traceability, and collaboration discipline.
+
 ---
 
 ## 📂 Project Structure
 
 smart-attendance-system/
 │
-├── index.html
-├── dashboard.html
-├── style.css
-├── login.js
-├── attendance.js
+├── index.html # Login page
+├── register.html # Register page
+├── dashboard.html # Dashboard & attendance page
+├── style.css # Global styling
+├── login.js # Login & register logic
+├── attendance.js # Attendance logic
 └── README.md
-
-
-
----
 
 ## 🔑 Default Login Credentials
 
+> For development and testing purposes only.
+
+Users can register a new account through the **Register page**.  
+All registered users are stored locally using **localStorage**.
 
 ---
 
@@ -100,7 +107,6 @@ smart-attendance-system/
 ## 🎯 Project Objectives
 
 This project aims to:
-
 - Apply Software Engineering concepts in a practical scenario
 - Demonstrate Git version control usage
 - Practice collaborative development using GitHub
@@ -113,6 +119,7 @@ This project aims to:
 ## ✅ Project Status
 
 ✔ Authentication system implemented  
+✔ Registration system implemented  
 ✔ Attendance management system implemented  
 ✔ Modern responsive UI applied  
 ✔ Git branching strategy applied  
@@ -123,67 +130,11 @@ This project aims to:
 
 ## 📎 Repository Link
 
-https://github.com/alfarid-rdwn/smart-attendance-system.git
+🔗 https://github.com/alfarid-rdwn/smart-attendance-system.git
 
+---
 
-🔄 Git Workflow Diagram
-1️⃣ Branching & Merging Flow
+## 🔄 Git Workflow Diagram
 
-                +-------------------+
-                |       main        |
-                | (Production Code) |
-                +---------+---------+
-                          ^
-                          |
-        ------------------+------------------
-        |                                   |
-+----------------+               +----------------------+
-|  feature-core  |               | feature-attendance  |
-| (Login, UI,    |               | (Form, Storage,     |
-| Dashboard)     |               | Table, Delete)      |
-+--------+-------+               +----------+-----------+
-         |                                   |
-         |                                   |
-   Multiple Commits                    Multiple Commits
-         |                                   |
-         +------------- Pull Request --------+
-                          |
-                    Code Review & Approval
-                          |
-                        Merge
-                          |
-                        main
+### 1️⃣ Branching & Merging Flow
 
-2️⃣ Development Process Flow
-
-Create Branch
-      ↓
-Develop Feature
-      ↓
-Make Multiple Commits
-      ↓
-Push to GitHub
-      ↓
-Create Pull Request
-      ↓
-Teammate Reviews Code
-      ↓
-Approve & Merge
-      ↓
-Feature Available in Main Branch
-
-3️⃣ System Workflow Diagram
-
-User → Login Page → Validate Credentials
-          ↓
-      Dashboard
-          ↓
-   Add Attendance Data
-          ↓
-   Save to localStorage
-          ↓
- Display in Table
-          ↓
-   Delete (Optional)
-          ↓
-        Logout
