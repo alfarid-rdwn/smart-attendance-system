@@ -38,7 +38,7 @@ function loadAttendance() {
         btnDeleteAll.style.display = "inline-block";
         document.getElementById("attendanceTable").style.display = "table";
 
-        records.forEach(function(record, index) {
+        records.forEach(function (record, index) {
             const tr = document.createElement("tr");
             const badgeClass = "badge-" + record.status.toLowerCase();
 
@@ -48,7 +48,7 @@ function loadAttendance() {
                 "<td>" + escapeHtml(record.kelas) + "</td>" +
                 "<td>" + record.date + "</td>" +
                 '<td><span class="badge ' + badgeClass + '">' + record.status + "</span></td>" +
-                '<td><button class="btn-delete" onclick="deleteAttendance(' + index + ')">🗑️ Hapus</button></td>';
+                '<td><button class="btn-delete" onclick="deleteAttendance(' + index + ')">🗑️ Delete</button></td>';
 
             tbody.appendChild(tr);
         });
@@ -60,14 +60,14 @@ function loadAttendance() {
 // ===== STATS =====
 function updateStats(records) {
     document.getElementById("statTotal").textContent = records.length;
-    document.getElementById("statHadir").textContent = records.filter(function(r) { return r.status === "Hadir"; }).length;
-    document.getElementById("statIzin").textContent = records.filter(function(r) { return r.status === "Izin"; }).length;
-    document.getElementById("statSakit").textContent = records.filter(function(r) { return r.status === "Sakit"; }).length;
-    document.getElementById("statAlpha").textContent = records.filter(function(r) { return r.status === "Alpha"; }).length;
+    document.getElementById("statHadir").textContent = records.filter(function (r) { return r.status === "Present"; }).length;
+    document.getElementById("statIzin").textContent = records.filter(function (r) { return r.status === "Permit"; }).length;
+    document.getElementById("statSakit").textContent = records.filter(function (r) { return r.status === "Sick"; }).length;
+    document.getElementById("statAlpha").textContent = records.filter(function (r) { return r.status === "Absent"; }).length;
 }
 
 // ===== ADD =====
-document.getElementById("attendanceForm").addEventListener("submit", function(e) {
+document.getElementById("attendanceForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
     const name = document.getElementById("name").value.trim();
@@ -86,28 +86,28 @@ document.getElementById("attendanceForm").addEventListener("submit", function(e)
     document.getElementById("kelas").value = "";
     document.getElementById("status").value = "";
 
-    showToast("✅ Data kehadiran berhasil disimpan!");
+    showToast("✅ Attendance saved successfully!");
     loadAttendance();
 });
 
 // ===== DELETE ONE =====
 function deleteAttendance(index) {
-    if (!confirm("Hapus data kehadiran ini?")) return;
+    if (!confirm("Delete this attendance record?")) return;
 
     const records = getAttendance();
     records.splice(index, 1);
     saveAttendance(records);
 
-    showToast("🗑️ Data berhasil dihapus.", true);
+    showToast("🗑️ Record deleted.", true);
     loadAttendance();
 }
 
 // ===== DELETE ALL =====
 function deleteAllAttendance() {
-    if (!confirm("Hapus SEMUA data kehadiran? Tindakan ini tidak bisa dibatalkan.")) return;
+    if (!confirm("Delete ALL attendance records? This action cannot be undone.")) return;
 
     saveAttendance([]);
-    showToast("🗑️ Semua data berhasil dihapus.", true);
+    showToast("🗑️ All records deleted.", true);
     loadAttendance();
 }
 
@@ -122,7 +122,7 @@ function showToast(message, isDelete) {
     toast.textContent = message;
     document.body.appendChild(toast);
 
-    setTimeout(function() {
+    setTimeout(function () {
         if (toast.parentNode) toast.remove();
     }, 2600);
 }
