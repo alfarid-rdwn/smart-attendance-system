@@ -5,19 +5,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - Smart Attendance</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <header class="topbar">
-    <h2>Smart Attendance</h2>
-    <button onclick="logout()">Logout</button>
+    <div class="topbar-brand">
+        <span class="topbar-icon">📋</span>
+        <h2>Smart Attendance</h2>
+    </div>
+    <button class="btn-logout" onclick="logout()">Logout</button>
 </header>
 
 <div class="container">
-    <div class="card">
-        <h3>Welcome to Smart Attendance</h3>
-        <p>Please use the attendance form below.</p>
+
+    <!-- Stats Summary -->
+    <div class="stats-row" id="statsRow">
+        <div class="stat-card stat-total">
+            <span class="stat-number" id="statTotal">0</span>
+            <span class="stat-label">Total</span>
+        </div>
+        <div class="stat-card stat-hadir">
+            <span class="stat-number" id="statHadir">0</span>
+            <span class="stat-label">Hadir</span>
+        </div>
+        <div class="stat-card stat-izin">
+            <span class="stat-number" id="statIzin">0</span>
+            <span class="stat-label">Izin</span>
+        </div>
+        <div class="stat-card stat-sakit">
+            <span class="stat-number" id="statSakit">0</span>
+            <span class="stat-label">Sakit</span>
+        </div>
+        <div class="stat-card stat-alpha">
+            <span class="stat-number" id="statAlpha">0</span>
+            <span class="stat-label">Alpha</span>
+        </div>
     </div>
+
+    <!-- Attendance Form -->
+    <div class="card form-card animate-in">
+        <h3>📝 Tambah Kehadiran</h3>
+        <form id="attendanceForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Nama Siswa</label>
+                    <input type="text" id="name" placeholder="Masukkan nama siswa" required>
+                </div>
+                <div class="form-group">
+                    <label for="kelas">Kelas</label>
+                    <input type="text" id="kelas" placeholder="Contoh: XII RPL 1" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Tanggal</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status</label>
+                    <select id="status" required>
+                        <option value="">-- Pilih Status --</option>
+                        <option value="Hadir">✅ Hadir</option>
+                        <option value="Izin">📩 Izin</option>
+                        <option value="Sakit">🤒 Sakit</option>
+                        <option value="Alpha">❌ Alpha</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">
+                <span>＋</span> Simpan Kehadiran
+            </button>
+        </form>
+    </div>
+
+    <!-- Attendance Table -->
+    <div class="card table-card animate-in">
+        <div class="table-header">
+            <h3>📊 Data Kehadiran</h3>
+            <button class="btn-delete-all" id="btnDeleteAll" onclick="deleteAllAttendance()" style="display:none;">
+                🗑️ Hapus Semua
+            </button>
+        </div>
+        <div class="table-wrapper">
+            <table id="attendanceTable">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Nama</th>
+                        <th>Kelas</th>
+                        <th>Tanggal</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="attendanceBody">
+                    <!-- Data rendered by JS -->
+                </tbody>
+            </table>
+            <div class="empty-state" id="emptyState">
+                <span class="empty-icon">📭</span>
+                <p>Belum ada data kehadiran.</p>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <script src="attendance.js"></script>
