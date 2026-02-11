@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Smart Attendance</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div class="topbar-brand">
+            <span class="topbar-icon">📋</span>
+            <h2>Smart Attendance</h2>
+        </div>
+        <button class="btn-logout" onclick="logout()">Logout</button>
+    </header>
+
+    <div class="container">
+
+        <!-- Stats Summary -->
+        <div class="stats-row" id="statsRow">
+            <div class="stat-card stat-total">
+                <span class="stat-number" id="statTotal">0</span>
+                <span class="stat-label">Total</span>
+            </div>
+            <div class="stat-card stat-hadir">
+                <span class="stat-number" id="statHadir">0</span>
+                <span class="stat-label">Present</span>
+            </div>
+            <div class="stat-card stat-izin">
+                <span class="stat-number" id="statIzin">0</span>
+                <span class="stat-label">Permit</span>
+            </div>
+            <div class="stat-card stat-sakit">
+                <span class="stat-number" id="statSakit">0</span>
+                <span class="stat-label">Sick</span>
+            </div>
+            <div class="stat-card stat-alpha">
+                <span class="stat-number" id="statAlpha">0</span>
+                <span class="stat-label">Absent</span>
+            </div>
+        </div>
+
+        <!-- Attendance Form -->
+        <div class="card form-card animate-in">
+            <h3>📝 Add Attendance</h3>
+            <form id="attendanceForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Student Name</label>
+                        <input type="text" id="name" placeholder="Enter student name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="kelas">Class</label>
+                        <input type="text" id="kelas" placeholder="e.g. XII RPL 1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" required>
+                            <option value="">-- Select Status --</option>
+                            <option value="Present">✅ Present</option>
+                            <option value="Permit">📩 Permit</option>
+                            <option value="Sick">🤒 Sick</option>
+                            <option value="Absent">❌ Absent</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">
+                    <span>＋</span> Save Attendance
+                </button>
+            </form>
+        </div>
+
+        <!-- Attendance Table -->
+        <div class="card table-card animate-in">
+            <div class="table-header">
+                <h3>📊 Attendance Data</h3>
+                <button class="btn-delete-all" id="btnDeleteAll" onclick="deleteAllAttendance()" style="display:none;">
+                    🗑️ Delete All
+                </button>
+            </div>
+            <div class="table-wrapper">
+                <table id="attendanceTable">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Class</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendanceBody">
+                        <!-- Data rendered by JS -->
+                    </tbody>
+                </table>
+                <div class="empty-state" id="emptyState">
+                    <span class="empty-icon">📭</span>
+                    <p>No attendance data yet.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="attendance.js"></script>
+</body>
+
+</html>
