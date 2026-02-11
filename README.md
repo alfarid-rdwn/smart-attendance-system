@@ -137,4 +137,7 @@ This project aims to:
 ## 🔄 Git Workflow Diagram
 
 ### 1️⃣ Branching & Merging Flow
+![Git Workflow Diagram](diagrams/git-workflow.png)
+
+### 2️⃣ Development Process Flow
 
